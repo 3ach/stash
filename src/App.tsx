@@ -3,7 +3,7 @@ import './App.css'
 
 import CabinetLayout from './components/CabinetLayout.tsx';
 import CabinetEditor from './components/CabinetEditor.tsx';
-import { Cabinet, scaleCabinet } from './models/Cabinet.ts';
+import { Cabinet } from './models/Cabinet.ts';
 import SVGDownloadButton from './components/SVGDownloadButton.tsx';
 
 function App() {
