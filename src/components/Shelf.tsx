@@ -10,7 +10,7 @@ export default class Shelf extends SVGComponent<SidePanelProps> {
 
     svg() {
         const bitWidth = this.props.cabinet.bitWidth;
-        const tenonDepth = this.props.cabinet.tenonDepth;
+        const tenonDepth = this.props.cabinet.depth / 3;
         const thickness = this.props.cabinet.thickness;
         const depth = this.props.cabinet.depth;
         const width = this.props.cabinet.width;

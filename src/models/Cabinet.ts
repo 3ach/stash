@@ -5,7 +5,6 @@ export type Cabinet = {
     cleatHeight: number,
     cleatDepth: number,
     thickness: number,
-    tenonDepth: number,
     shelfCount: number,
 
     bitWidth: number,
@@ -20,10 +19,9 @@ export function scaleCabinet(cabinet: Cabinet, scale: number): Cabinet {
         cleatHeight: cabinet.cleatHeight * scale,
         cleatDepth: cabinet.cleatDepth * scale,
         thickness: cabinet.thickness * scale,
-        tenonDepth: cabinet.tenonDepth * scale,
         shelfCount: cabinet.shelfCount,
 
         bitWidth: cabinet.bitWidth * scale,
-        kerf: cabinet.kerf * scale,
+        kerf: cabinet.kerf,
     }
 }

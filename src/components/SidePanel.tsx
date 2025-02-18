@@ -10,7 +10,7 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
 
     svg() {
         const bitWidth = this.props.cabinet.bitWidth;
-        const tenonDepth = this.props.cabinet.tenonDepth;
+        const tenonDepth = this.props.cabinet.depth / 3;
         const thickness = this.props.cabinet.thickness;
         const cleatDepth = this.props.cabinet.cleatDepth;
         const depth = this.props.cabinet.depth;

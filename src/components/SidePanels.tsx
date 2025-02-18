@@ -18,7 +18,7 @@ export default function SidePanels(props: SidePanelProps) {
             />
 
             <SidePanel
-                x={props.strokeWidth + props.cabinet.depth + (1.5 * props.cabinet.bitWidth)}
+                x={props.strokeWidth + props.cabinet.depth + (props.cabinet.kerf * props.cabinet.bitWidth)}
                 y={props.strokeWidth / 2}
                 rotation={0}
                 strokeWidth={props.strokeWidth}
