@@ -3,13 +3,14 @@ import './App.css'
 
 import CabinetLayout from './components/CabinetLayout.tsx';
 import CabinetEditor from './components/CabinetEditor.tsx';
-import { scaleCabinet } from './models/Cabinet.ts';
+import { Cabinet, scaleCabinet } from './models/Cabinet.ts';
 import SVGDownloadButton from './components/SVGDownloadButton.tsx';
 
 function App() {
   const bitWidth = .125;
   const depth = 8;
-  const [cabinet, setCabinet] = useState({
+  const [cabinet, setCabinet] = useState<Cabinet>({
+    cabinetType: "shelf-box",
     depth: depth,
     height: 12,
     width: 10,

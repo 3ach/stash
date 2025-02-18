@@ -1,5 +1,6 @@
 import { Cabinet } from "../models/Cabinet"
 import CabinetPropEditor from "./CabinetPropEditor"
+import CabinetTypeSelector from "./CabinetTypeSelector"
 
 type CabinetEditorProps = {
     cabinet: Cabinet,
@@ -11,6 +12,25 @@ export default function CabinetEditor(props: CabinetEditorProps) {
         <>
         <div className="inline-block p-1.5">
             <h1 className="text-2xl font-bold">Cabinet options</h1>
+            <div className="inline-block p-1.5">
+            <CabinetTypeSelector
+                updateCabinet={props.updateCabinet}
+                cabinet={props.cabinet}
+            />
+            <CabinetPropEditor
+                itemName="Stock thickness"
+                propName="thickness"
+                updateCabinet={props.updateCabinet}
+                cabinet={props.cabinet}
+            />
+            <CabinetPropEditor
+                itemName="Shelf count"
+                propName="shelfCount"
+                updateCabinet={props.updateCabinet}
+                cabinet={props.cabinet}
+            />
+            </div>
+            <div className="inline-block p-1.5">
             <CabinetPropEditor
                 itemName="Cabinet depth"
                 propName="depth"
@@ -29,18 +49,7 @@ export default function CabinetEditor(props: CabinetEditorProps) {
                 updateCabinet={props.updateCabinet}
                 cabinet={props.cabinet}
             />
-            <CabinetPropEditor
-                itemName="Shelf count"
-                propName="shelfCount"
-                updateCabinet={props.updateCabinet}
-                cabinet={props.cabinet}
-            />
-            <CabinetPropEditor
-                itemName="Stock thickness"
-                propName="thickness"
-                updateCabinet={props.updateCabinet}
-                cabinet={props.cabinet}
-            />
+            </div>
         </div>
         <div className="inline-block p-1.5">
             <h1 className="text-2xl font-bold">Machine options</h1>

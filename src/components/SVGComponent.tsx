@@ -9,7 +9,7 @@ export interface SVGProps {
     strokeWidth: number,
 }
 
-export abstract class SVGComponent<TProps extends SVGProps> extends React.Component<TProps, {}> {
+export abstract class SVGComponent<TProps extends SVGProps> extends React.Component<TProps> {
 
     abstract svg(): SVG.Path;
 

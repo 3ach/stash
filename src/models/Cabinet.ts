@@ -1,4 +1,9 @@
+
+export const cabinetTypes = ["shelf-box"]
+export type CabinetType = typeof cabinetTypes[number];
+
 export type Cabinet = {
+    cabinetType: CabinetType,
     depth: number,
     height: number,
     width: number,
@@ -13,6 +18,7 @@ export type Cabinet = {
 
 export function scaleCabinet(cabinet: Cabinet, scale: number): Cabinet {
     return {
+        cabinetType: cabinet.cabinetType,
         depth: cabinet.depth * scale,
         height: cabinet.height * scale,
         width: cabinet.width * scale,

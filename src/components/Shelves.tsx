@@ -8,7 +8,7 @@ type ShelfProps = {
 
 export default function Shelves(props: ShelfProps) {
     const kerfWidth = props.cabinet.kerf * props.cabinet.bitWidth;
-    let shelves = [];
+    const shelves = [];
 
     let x = props.strokeWidth / 2;
     let y = props.strokeWidth / 2 + props.cabinet.height + kerfWidth;
