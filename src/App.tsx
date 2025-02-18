@@ -29,8 +29,8 @@ function App() {
       <div>
         <div className="inline-block">
           <CabinetEditor cabinet={cabinet} updateCabinet={setCabinet} />
+          <SVGDownloadButton className="real-size-layout" />
         </div>
-        <SVGDownloadButton className="real-size-layout" />
       </div>
       <hr className="p-3"/>
       <CabinetLayout cabinet={scaledCabinet} strokeWidth={strokeWidth} />
