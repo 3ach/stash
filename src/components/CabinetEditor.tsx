@@ -13,25 +13,25 @@ export default function CabinetEditor(props: CabinetEditorProps) {
         <div className="inline-block p-1.5">
             <h1 className="text-2xl font-bold">Cabinet options</h1>
             <CabinetPropEditor
-                itemName="Cabinet depth"
+                itemName="Cabinet depth (in)"
                 propName="depth"
                 updateCabinet={props.updateCabinet}
                 cabinet={props.cabinet}
             />
             <CabinetPropEditor
-                itemName="Cabinet height"
+                itemName="Cabinet height (in)"
                 propName="height"
                 updateCabinet={props.updateCabinet}
                 cabinet={props.cabinet}
             />
             <CabinetPropEditor
-                itemName="Cabinet width"
+                itemName="Cabinet width (in)"
                 propName="width"
                 updateCabinet={props.updateCabinet}
                 cabinet={props.cabinet}
             />
             <CabinetPropEditor
-                itemName="Shelf count"
+                itemName="Shelf count (in)"
                 propName="shelfCount"
                 updateCabinet={props.updateCabinet}
                 cabinet={props.cabinet}
@@ -70,7 +70,7 @@ export default function CabinetEditor(props: CabinetEditorProps) {
                 cabinet={props.cabinet}
             />
             <CabinetPropEditor
-                itemName="Cleat height"
+                itemName="Cleat height (in)"
                 propName="cleatHeight"
                 updateCabinet={props.updateCabinet}
                 cabinet={props.cabinet}
