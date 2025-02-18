@@ -22,7 +22,6 @@ function App() {
     kerf: 1.5,
   });
 
-  const scaledCabinet = scaleCabinet(cabinet, 25);
   const strokeWidth = 1;
 
   return (
@@ -34,7 +33,7 @@ function App() {
         </div>
       </div>
       <hr className="p-3"/>
-      <CabinetLayout cabinet={scaledCabinet} strokeWidth={strokeWidth} />
+      <CabinetLayout cabinet={cabinet} scaleToHeight={window.innerHeight - 300} strokeWidth={strokeWidth} />
       <div className='hidden' id='real-size-layout'>
         <CabinetLayout cabinet={cabinet} strokeWidth={strokeWidth} />
       </div>
