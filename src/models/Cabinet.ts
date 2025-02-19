@@ -1,5 +1,5 @@
 
-export const cabinetTypes = ["shelf-box"]
+export const cabinetTypes = ["shelf-box", "tray"] as const;
 export type CabinetType = typeof cabinetTypes[number];
 
 export type Cabinet = {

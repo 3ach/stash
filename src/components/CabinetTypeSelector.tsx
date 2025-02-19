@@ -8,13 +8,16 @@ type CabinetTypeSelectorProps = {
 function cabinetTypeToName(cabinetType: CabinetType): string {
     switch (cabinetType) {
         case "shelf-box": return "Box with shelves"
-        default: return "uh, something is broken. Please report this bug!";
+        case "tray": return "Tray"
     }
 }
 
 export default function CabinetTypeSelector(props: CabinetTypeSelectorProps) {
     const update = (updatedType: CabinetType) => {
-        props.updateCabinet({...props.cabinet, cabinetType: updatedType});
+        switch (updatedType) {
+            case "shelf-box": props.updateCabinet({...props.cabinet, cabinetType: updatedType, shelfCount: 3}); break;
+            case "tray": props.updateCabinet({...props.cabinet, cabinetType: updatedType, shelfCount: 0}); break;
+        }
     }
     const options = cabinetTypes.map((cabinetType, idx) => <option key={idx} value={cabinetType}>{cabinetTypeToName(cabinetType)}</option>)
 
@@ -25,7 +28,7 @@ export default function CabinetTypeSelector(props: CabinetTypeSelectorProps) {
                 <select
                     className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                     defaultValue={cabinetTypeToName(props.cabinet.cabinetType)} 
-                    onChange={(e) => update(e.target.value)}
+                    onChange={(e) => update(e.target.value as CabinetType)}
                 >
                     {options}
                 </select>

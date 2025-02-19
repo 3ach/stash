@@ -1,4 +1,4 @@
-import { Cabinet } from "../models/Cabinet"
+import { Cabinet, CabinetType } from "../models/Cabinet"
 import CabinetPropEditor from "./CabinetPropEditor"
 import CabinetTypeSelector from "./CabinetTypeSelector"
 
@@ -7,7 +7,45 @@ type CabinetEditorProps = {
     updateCabinet: (c: Cabinet) => void,
 }
 
+function propertyNameToLabel(name: keyof Cabinet): string {
+    switch (name) {
+        case "thickness": return "Stock thickness";
+        case "shelfCount": return "Shelf count";
+        case "depth": return "Cabinet depth";
+        case "height": return "Cabinet height";
+        case "width": return "Cabinet width";
+        case "bitWidth": return "Bit size";
+        case "kerf": return "Kerf width (bit diameters)";
+        case "cleatDepth": return "Cleat thickness";
+        case "cleatHeight": return "Cleat height";
+        case "cabinetType": return "Cabinet type";
+    }
+}
+
+function cabinetTypeToEditableProperties(cabinetType: CabinetType): (keyof Cabinet)[][] {
+    switch (cabinetType) {
+        case "shelf-box": return [["thickness", "shelfCount"], ["depth", "height", "width"]]
+        case "tray": return [["thickness"], ["depth", "width"]]
+    }
+}
+
 export default function CabinetEditor(props: CabinetEditorProps) {
+    let [firstCol, secondCol] = cabinetTypeToEditableProperties(props.cabinet.cabinetType); 
+
+    let firstColEditors = firstCol.map((property) => <CabinetPropEditor
+        itemName={propertyNameToLabel(property)}
+        propName={property}
+        updateCabinet={props.updateCabinet}
+        cabinet={props.cabinet}
+    />)
+
+    let secondColEditors = secondCol.map((property) => <CabinetPropEditor
+        itemName={propertyNameToLabel(property)}
+        propName={property}
+        updateCabinet={props.updateCabinet}
+        cabinet={props.cabinet}
+    />)
+
     return (
         <>
         <div className="inline-block p-1.5">
@@ -17,38 +55,10 @@ export default function CabinetEditor(props: CabinetEditorProps) {
                 updateCabinet={props.updateCabinet}
                 cabinet={props.cabinet}
             />
-            <CabinetPropEditor
-                itemName="Stock thickness"
-                propName="thickness"
-                updateCabinet={props.updateCabinet}
-                cabinet={props.cabinet}
-            />
-            <CabinetPropEditor
-                itemName="Shelf count"
-                propName="shelfCount"
-                updateCabinet={props.updateCabinet}
-                cabinet={props.cabinet}
-            />
+            {firstColEditors}
             </div>
             <div className="inline-block p-1.5">
-            <CabinetPropEditor
-                itemName="Cabinet depth"
-                propName="depth"
-                updateCabinet={props.updateCabinet}
-                cabinet={props.cabinet}
-            />
-            <CabinetPropEditor
-                itemName="Cabinet height"
-                propName="height"
-                updateCabinet={props.updateCabinet}
-                cabinet={props.cabinet}
-            />
-            <CabinetPropEditor
-                itemName="Cabinet width"
-                propName="width"
-                updateCabinet={props.updateCabinet}
-                cabinet={props.cabinet}
-            />
+            {secondColEditors}
             </div>
         </div>
         <div className="inline-block p-1.5">
