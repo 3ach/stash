@@ -23,7 +23,7 @@ export default function CabinetLayout(props: CabinetLayoutProps) {
 
     let cabinet = props.cabinet;
     if (props.scaleToHeight) {
-        let scalingFactor = props.scaleToHeight / overallHeight;
+        const scalingFactor = props.scaleToHeight / overallHeight;
 
         cabinet = scaleCabinet(cabinet, scalingFactor);
         overallWidth *= scalingFactor;

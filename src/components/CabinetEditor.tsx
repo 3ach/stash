@@ -30,16 +30,16 @@ function cabinetTypeToEditableProperties(cabinetType: CabinetType): (keyof Cabin
 }
 
 export default function CabinetEditor(props: CabinetEditorProps) {
-    let [firstCol, secondCol] = cabinetTypeToEditableProperties(props.cabinet.cabinetType); 
+    const [firstCol, secondCol] = cabinetTypeToEditableProperties(props.cabinet.cabinetType); 
 
-    let firstColEditors = firstCol.map((property) => <CabinetPropEditor
+    const firstColEditors = firstCol.map((property) => <CabinetPropEditor
         itemName={propertyNameToLabel(property)}
         propName={property}
         updateCabinet={props.updateCabinet}
         cabinet={props.cabinet}
     />)
 
-    let secondColEditors = secondCol.map((property) => <CabinetPropEditor
+    const secondColEditors = secondCol.map((property) => <CabinetPropEditor
         itemName={propertyNameToLabel(property)}
         propName={property}
         updateCabinet={props.updateCabinet}

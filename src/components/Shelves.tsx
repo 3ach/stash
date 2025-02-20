@@ -25,7 +25,7 @@ export default function Shelves(props: ShelfProps) {
     const kerfWidth = props.cabinet.kerf * props.cabinet.bitWidth;
     const shelves = [];
 
-    let shelfCount = cabinetTypeToBaseShelfCount(props.cabinet.cabinetType) + props.cabinet.shelfCount;
+    const shelfCount = cabinetTypeToBaseShelfCount(props.cabinet.cabinetType) + props.cabinet.shelfCount;
 
     let x = props.strokeWidth / 2;
     let y = props.strokeWidth / 2 + props.cabinet.height + kerfWidth;
@@ -42,7 +42,7 @@ export default function Shelves(props: ShelfProps) {
         shelves.push(<Shelf key={shelf} x={x} y={y} strokeWidth={props.strokeWidth} rotation={0} cabinet={props.cabinet} />)
     }
 
-    let stretcherCount = cabinetTypeToStretcherCount(props.cabinet.cabinetType);
+    const stretcherCount = cabinetTypeToStretcherCount(props.cabinet.cabinetType);
     for (let stretcher = shelfCount; stretcher < stretcherCount + shelfCount; stretcher++) {
         if (stretcher % 2 == 0) {
             x = props.strokeWidth / 2;

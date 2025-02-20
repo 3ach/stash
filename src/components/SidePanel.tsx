@@ -7,24 +7,23 @@ interface SidePanelProps extends SVGProps {
 }
 
 export default class SidePanel extends SVGComponent<SidePanelProps> {
-        mortise(x: number, y: number) {
+    mortise(x: number, y: number) {
         const bitWidth = this.props.cabinet.bitWidth;
         const tenonDepth = this.props.cabinet.depth / 3;
         const thickness = this.props.cabinet.thickness;
 
-            let pathstr = `M ${x} ${y}`;
-            pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + bitWidth} ${y}`
-            pathstr += `L ${x + tenonDepth - bitWidth} ${y}`;
-            pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + tenonDepth} ${y}`
-            pathstr += `L ${x + tenonDepth} ${y + thickness}`;
-            pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + tenonDepth - bitWidth} ${y + thickness}`
-            pathstr += `L ${x + bitWidth} ${y + thickness}`;
-            pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x} ${y + thickness}`
-            pathstr += 'z';
+        let pathstr = `M ${x} ${y}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + bitWidth} ${y}`
+        pathstr += `L ${x + tenonDepth - bitWidth} ${y}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + tenonDepth} ${y}`
+        pathstr += `L ${x + tenonDepth} ${y + thickness}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + tenonDepth - bitWidth} ${y + thickness}`
+        pathstr += `L ${x + bitWidth} ${y + thickness}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x} ${y + thickness}`
+        pathstr += 'z';
 
-            return pathstr;
-        }
-
+        return pathstr;
+    }
 
     boxCabinetSide() {
         const bitWidth = this.props.cabinet.bitWidth;
