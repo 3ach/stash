@@ -9,6 +9,7 @@ function cabinetTypeToName(cabinetType: CabinetType): string {
     switch (cabinetType) {
         case "shelf-box": return "Box with shelves"
         case "tray": return "Tray"
+        case "test-fit": return "Test fit"
     }
 }
 
@@ -17,6 +18,7 @@ export default function CabinetTypeSelector(props: CabinetTypeSelectorProps) {
         switch (updatedType) {
             case "shelf-box": props.updateCabinet({...props.cabinet, cabinetType: updatedType, shelfCount: 3, height: 12}); break;
             case "tray": props.updateCabinet({...props.cabinet, cabinetType: updatedType, shelfCount: 0, height: (props.cabinet.cleatHeight * 3)}); break;
+            case "test-fit": props.updateCabinet({...props.cabinet, cabinetType: updatedType, shelfCount: 0, height: props.cabinet.thickness * 6})
         }
     }
     const options = cabinetTypes.map((cabinetType, idx) => <option key={idx} value={cabinetType}>{cabinetTypeToName(cabinetType)}</option>)

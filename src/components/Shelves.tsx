@@ -11,6 +11,7 @@ function cabinetTypeToBaseShelfCount(cabinetType: CabinetType): number {
     switch (cabinetType) {
         case "shelf-box": return 2
         case "tray": return 1
+        case "test-fit": return 0
     }
 }
 
@@ -18,6 +19,7 @@ function cabinetTypeToStretcherCount(cabinetType: CabinetType): number {
     switch (cabinetType) {
         case "shelf-box": return 0
         case "tray": return 1
+        case "test-fit": return 0
     }
 }
 

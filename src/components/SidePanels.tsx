@@ -17,13 +17,13 @@ export default function SidePanels(props: SidePanelProps) {
                 cabinet={props.cabinet}
             />
 
-            <SidePanel
+            {props.cabinet.cabinetType != "test-fit" ? <SidePanel
                 x={props.strokeWidth + props.cabinet.depth + (props.cabinet.kerf * props.cabinet.bitWidth)}
                 y={props.strokeWidth / 2}
                 rotation={0}
                 strokeWidth={props.strokeWidth}
                 cabinet={props.cabinet}
-            />
+            /> : null}
         </>
     )
 } 

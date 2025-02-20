@@ -26,6 +26,7 @@ function cabinetTypeToEditableProperties(cabinetType: CabinetType): (keyof Cabin
     switch (cabinetType) {
         case "shelf-box": return [["thickness", "shelfCount"], ["depth", "height", "width"]]
         case "tray": return [["thickness"], ["depth", "width"]]
+        case "test-fit": return [["thickness", "height"], []]
     }
 }
 
@@ -33,6 +34,7 @@ export default function CabinetEditor(props: CabinetEditorProps) {
     const [firstCol, secondCol] = cabinetTypeToEditableProperties(props.cabinet.cabinetType); 
 
     const firstColEditors = firstCol.map((property) => <CabinetPropEditor
+        key={property}
         itemName={propertyNameToLabel(property)}
         propName={property}
         updateCabinet={props.updateCabinet}
@@ -40,6 +42,7 @@ export default function CabinetEditor(props: CabinetEditorProps) {
     />)
 
     const secondColEditors = secondCol.map((property) => <CabinetPropEditor
+        key={property}
         itemName={propertyNameToLabel(property)}
         propName={property}
         updateCabinet={props.updateCabinet}

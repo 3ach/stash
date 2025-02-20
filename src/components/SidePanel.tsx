@@ -141,10 +141,45 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         return pathstr;
     }
 
+    testFit() {
+        const thickness = this.props.cabinet.thickness;
+        const height = this.props.cabinet.height;
+        const tenonDepth = height / 3;
+        const bitWidth = this.props.cabinet.bitWidth;
+        const kerfWidth = bitWidth * this.props.cabinet.kerf;
+
+        let pathstr = `M 0 0`
+        pathstr += `L ${2 * thickness} 0`;
+        pathstr += `L ${2 * thickness} ${tenonDepth}`;
+        pathstr += `L ${thickness} ${tenonDepth}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${thickness} ${tenonDepth + bitWidth}`;
+        pathstr += `L ${thickness} ${height - tenonDepth - bitWidth}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${thickness} ${height - tenonDepth}`;
+        pathstr += `L ${2 * thickness} ${height - tenonDepth}`;
+        pathstr += `L ${2 * thickness} ${height}`;
+        pathstr += `L 0 ${height}`;
+        pathstr += `z`;
+
+        const xOffset = (2 * thickness) + kerfWidth;
+        pathstr += `M ${xOffset + thickness} 0`
+        pathstr += `L ${xOffset + 2 * thickness} 0`
+        pathstr += `L ${xOffset + 2 * thickness} ${height}`
+        pathstr += `L ${xOffset + thickness} ${height}`
+        pathstr += `L ${xOffset + thickness} ${height - tenonDepth + bitWidth}`
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${xOffset + thickness} ${height - tenonDepth}`;
+        pathstr += `L ${xOffset} ${height - tenonDepth}`
+        pathstr += `L ${xOffset} ${tenonDepth}`
+        pathstr += `L ${xOffset + thickness} ${tenonDepth}`
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${xOffset + thickness} ${tenonDepth - bitWidth}`;
+        pathstr += 'z'
+        return pathstr;
+    }
+
     svg() {
         switch (this.props.cabinet.cabinetType) {
             case "shelf-box": return SVG().path(this.boxCabinetSide()).fill("none")
             case "tray": return SVG().path(this.traySide()).fill("none")
+            case "test-fit": return SVG().path(this.testFit()).fill("none")
         }
     }
 } 
