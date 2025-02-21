@@ -93,6 +93,7 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         const shelfCount = this.props.cabinet.shelfCount;
 
         const tenonBack = cleatDepth + ((depth - tenonDepth) / 2);
+        const stretcherHeight = height / 3
 
         let pathstr = "M 0 0 ";
         // Top with mortise 
@@ -110,13 +111,14 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         pathstr += `L ${thickness * 2 + cleatDepth} ${height}`
         pathstr += `L ${cleatDepth} ${height}`
 
+
         // Back with mortise
-        pathstr += `L ${cleatDepth} ${depth - cleatHeight}`
-        pathstr += `L ${cleatDepth + thickness} ${depth - cleatHeight}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${cleatDepth + thickness} ${depth - cleatHeight - bitWidth}`
-        pathstr += `L ${cleatDepth + thickness} ${depth - cleatHeight - tenonDepth + bitWidth}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${cleatDepth + thickness} ${depth - cleatHeight - tenonDepth}`
-        pathstr += `L ${cleatDepth} ${depth - cleatHeight - tenonDepth}`
+        pathstr += `L ${cleatDepth} ${height - stretcherHeight}`
+        pathstr += `L ${cleatDepth + thickness} ${height - stretcherHeight}`
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${cleatDepth + thickness} ${height - stretcherHeight - bitWidth}`
+        pathstr += `L ${cleatDepth + thickness} ${stretcherHeight + bitWidth}`
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${cleatDepth + thickness} ${stretcherHeight}`
+        pathstr += `L ${cleatDepth} ${stretcherHeight}`
 
         // Cleat interior angle 
         const arcStart = cleatHeight - cleatDepth + ((bitWidth / 2) / Math.tan(Math.PI / 8));

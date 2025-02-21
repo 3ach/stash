@@ -9,7 +9,7 @@ interface SidePanelProps extends SVGProps {
 export default class Stretcher extends SVGComponent<SidePanelProps> {
 
     svg() {
-        const tenonDepth = this.props.cabinet.depth / 3;
+        const tenonDepth = this.props.cabinet.height / 3;
         const width = this.props.cabinet.width;
 
 
