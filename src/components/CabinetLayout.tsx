@@ -15,10 +15,15 @@ export default function CabinetLayout(props: CabinetLayoutProps) {
     const shelfCount = props.cabinet.shelfCount;
     const cleatDepth = props.cabinet.cleatDepth;
     const kerfWidth = props.cabinet.kerf * props.cabinet.bitWidth;
+    const cabinetType = props.cabinet.cabinetType
+    const thickness = props.cabinet.thickness;
     const strokeWidth = props.strokeWidth;
 
     const shelfRows = Math.ceil(shelfCount / 2) + 1;
     let overallWidth = (2 * (strokeWidth + depth)) + cleatDepth + kerfWidth - (strokeWidth / 2);
+    if (cabinetType == "test-fit") {
+        overallWidth = thickness * 5 + kerfWidth + (2 * strokeWidth);
+    }
     let overallHeight = height + strokeWidth + (kerfWidth * (shelfRows)) + ((width + strokeWidth) * shelfRows);
 
     let cabinet = props.cabinet;

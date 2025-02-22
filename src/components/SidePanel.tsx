@@ -150,19 +150,31 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         const bitWidth = this.props.cabinet.bitWidth;
         const kerfWidth = bitWidth * this.props.cabinet.kerf;
 
+        // Mortise
         let pathstr = `M 0 0`
-        pathstr += `L ${2 * thickness} 0`;
+        pathstr += `L ${3 * thickness} 0`;
+        pathstr += `L ${3 * thickness} ${tenonDepth}`;
         pathstr += `L ${2 * thickness} ${tenonDepth}`;
-        pathstr += `L ${thickness} ${tenonDepth}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${thickness} ${tenonDepth + bitWidth}`;
-        pathstr += `L ${thickness} ${height - tenonDepth - bitWidth}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${thickness} ${height - tenonDepth}`;
-        pathstr += `L ${2 * thickness} ${height - tenonDepth}`;
-        pathstr += `L ${2 * thickness} ${height}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${2 * thickness} ${tenonDepth + bitWidth}`;
+        pathstr += `L ${2 * thickness} ${height - tenonDepth - bitWidth}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${2 * thickness} ${height - tenonDepth}`;
+        pathstr += `L ${3 * thickness} ${height - tenonDepth}`;
+        pathstr += `L ${3 * thickness} ${height}`;
         pathstr += `L 0 ${height}`;
         pathstr += `z`;
 
-        const xOffset = (2 * thickness) + kerfWidth;
+        pathstr += `M ${0.5 * thickness} ${tenonDepth}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${(0.5 * thickness) + bitWidth} ${tenonDepth}`;
+        pathstr += `L ${(1.5 * thickness) - bitWidth} ${tenonDepth}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${1.5 * thickness} ${tenonDepth}`;
+        pathstr += `L ${1.5 * thickness} ${height - tenonDepth}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${(1.5 * thickness) - bitWidth} ${height - tenonDepth}`;
+        pathstr += `L ${(0.5 * thickness) + bitWidth} ${height - tenonDepth}`;
+        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${0.5 * thickness} ${height - tenonDepth}`;
+        pathstr += `z`
+
+        // Tenon
+        const xOffset = (3 * thickness) + kerfWidth;
         pathstr += `M ${xOffset + thickness} 0`
         pathstr += `L ${xOffset + 2 * thickness} 0`
         pathstr += `L ${xOffset + 2 * thickness} ${height}`
