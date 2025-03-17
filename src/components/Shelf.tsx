@@ -9,7 +9,6 @@ interface SidePanelProps extends SVGProps {
 export default class Shelf extends SVGComponent<SidePanelProps> {
 
     svg() {
-        const bitWidth = this.props.cabinet.bitWidth;
         const tenonDepth = this.props.cabinet.depth / 3;
         const thickness = this.props.cabinet.thickness;
         const depth = this.props.cabinet.depth;
@@ -18,20 +17,16 @@ export default class Shelf extends SVGComponent<SidePanelProps> {
         const tenonBack = (depth - tenonDepth) / 2;
 
         let pathstr = `M 0 ${thickness}`
-        pathstr += `L ${tenonBack - bitWidth} ${thickness}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack} ${thickness}`
+        pathstr += `L ${tenonBack} ${thickness}`
         pathstr += `L ${tenonBack} 0`
         pathstr += `L ${tenonBack + tenonDepth} 0`
         pathstr += `L ${tenonBack + tenonDepth} ${thickness}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack + tenonDepth + bitWidth} ${thickness}`
         pathstr += `L ${depth} ${thickness}`
         pathstr += `L ${depth} ${width - thickness}`
-        pathstr += `L ${tenonBack + tenonDepth + bitWidth} ${width - thickness}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack + tenonDepth} ${width - thickness}`
+        pathstr += `L ${tenonBack + tenonDepth} ${width - thickness}`
         pathstr += `L ${tenonBack + tenonDepth} ${width}`
         pathstr += `L ${tenonBack} ${width}`
         pathstr += `L ${tenonBack} ${width - thickness}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack - bitWidth} ${width - thickness}`
         pathstr += `L 0 ${width - thickness}`
         pathstr += 'z'
 

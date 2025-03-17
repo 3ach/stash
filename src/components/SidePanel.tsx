@@ -8,18 +8,13 @@ interface SidePanelProps extends SVGProps {
 
 export default class SidePanel extends SVGComponent<SidePanelProps> {
     mortise(x: number, y: number) {
-        const bitWidth = this.props.cabinet.bitWidth;
         const tenonDepth = this.props.cabinet.depth / 3;
         const thickness = this.props.cabinet.thickness;
 
         let pathstr = `M ${x} ${y}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + bitWidth} ${y}`
-        pathstr += `L ${x + tenonDepth - bitWidth} ${y}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + tenonDepth} ${y}`
+        pathstr += `L ${x + tenonDepth} ${y}`;
         pathstr += `L ${x + tenonDepth} ${y + thickness}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x + tenonDepth - bitWidth} ${y + thickness}`
-        pathstr += `L ${x + bitWidth} ${y + thickness}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${x} ${y + thickness}`
+        pathstr += `L ${x} ${y + thickness}`;
         pathstr += 'z';
 
         return pathstr;
@@ -41,9 +36,7 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         // Top with mortise 
         pathstr += `L ${tenonBack} 0`;
         pathstr += `L ${tenonBack} ${thickness}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack + bitWidth} ${thickness}`
-        pathstr += `L ${tenonBack + tenonDepth - bitWidth} ${thickness}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack + tenonDepth} ${thickness}`
+        pathstr += `L ${tenonBack + tenonDepth} ${thickness}`;
         pathstr += `L ${tenonBack + tenonDepth} 0`;
         pathstr += `L ${depth + cleatDepth} 0`;
 
@@ -53,9 +46,7 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         // Bottom with mortise
         pathstr += `L ${tenonBack + tenonDepth} ${height}`;
         pathstr += `L ${tenonBack + tenonDepth} ${height - thickness}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack + tenonDepth - bitWidth} ${height - thickness}`
-        pathstr += `L ${tenonBack + bitWidth} ${height - thickness}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack} ${height - thickness}`
+        pathstr += `L ${tenonBack} ${height - thickness}`;
         pathstr += `L ${tenonBack} ${height}`;
         pathstr += `L ${cleatDepth} ${height}`;
 
@@ -99,9 +90,7 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         // Top with mortise 
         pathstr += `L ${tenonBack} 0`;
         pathstr += `L ${tenonBack} ${thickness}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack + bitWidth} ${thickness}`
-        pathstr += `L ${tenonBack + tenonDepth - bitWidth} ${thickness}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${tenonBack + tenonDepth} ${thickness}`
+        pathstr += `L ${tenonBack + tenonDepth} ${thickness}`;
         pathstr += `L ${tenonBack + tenonDepth} 0`;
         pathstr += `L ${depth + cleatDepth} 0`;
 
@@ -115,9 +104,7 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         // Back with mortise
         pathstr += `L ${cleatDepth} ${height - stretcherHeight}`
         pathstr += `L ${cleatDepth + thickness} ${height - stretcherHeight}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${cleatDepth + thickness} ${height - stretcherHeight - bitWidth}`
-        pathstr += `L ${cleatDepth + thickness} ${stretcherHeight + bitWidth}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${cleatDepth + thickness} ${stretcherHeight}`
+        pathstr += `L ${cleatDepth + thickness} ${stretcherHeight}`
         pathstr += `L ${cleatDepth} ${stretcherHeight}`
 
         // Cleat interior angle 
@@ -155,22 +142,16 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         pathstr += `L ${3 * thickness} 0`;
         pathstr += `L ${3 * thickness} ${tenonDepth}`;
         pathstr += `L ${2 * thickness} ${tenonDepth}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${2 * thickness} ${tenonDepth + bitWidth}`;
-        pathstr += `L ${2 * thickness} ${height - tenonDepth - bitWidth}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${2 * thickness} ${height - tenonDepth}`;
+        pathstr += `L ${2 * thickness} ${height - tenonDepth}`;
         pathstr += `L ${3 * thickness} ${height - tenonDepth}`;
         pathstr += `L ${3 * thickness} ${height}`;
         pathstr += `L 0 ${height}`;
         pathstr += `z`;
 
         pathstr += `M ${0.5 * thickness} ${tenonDepth}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${(0.5 * thickness) + bitWidth} ${tenonDepth}`;
-        pathstr += `L ${(1.5 * thickness) - bitWidth} ${tenonDepth}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${1.5 * thickness} ${tenonDepth}`;
+        pathstr += `L ${1.5 * thickness} ${tenonDepth}`;
         pathstr += `L ${1.5 * thickness} ${height - tenonDepth}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${(1.5 * thickness) - bitWidth} ${height - tenonDepth}`;
-        pathstr += `L ${(0.5 * thickness) + bitWidth} ${height - tenonDepth}`;
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 1 ${0.5 * thickness} ${height - tenonDepth}`;
+        pathstr += `L ${0.5 * thickness} ${height - tenonDepth}`;
         pathstr += `z`
 
         // Tenon
@@ -179,12 +160,10 @@ export default class SidePanel extends SVGComponent<SidePanelProps> {
         pathstr += `L ${xOffset + 2 * thickness} 0`
         pathstr += `L ${xOffset + 2 * thickness} ${height}`
         pathstr += `L ${xOffset + thickness} ${height}`
-        pathstr += `L ${xOffset + thickness} ${height - tenonDepth + bitWidth}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${xOffset + thickness} ${height - tenonDepth}`;
+        pathstr += `L ${xOffset + thickness} ${height - tenonDepth}`
         pathstr += `L ${xOffset} ${height - tenonDepth}`
         pathstr += `L ${xOffset} ${tenonDepth}`
         pathstr += `L ${xOffset + thickness} ${tenonDepth}`
-        pathstr += `A ${bitWidth / 2} ${bitWidth / 2} 0 0 0 ${xOffset + thickness} ${tenonDepth - bitWidth}`;
         pathstr += 'z'
         return pathstr;
     }
